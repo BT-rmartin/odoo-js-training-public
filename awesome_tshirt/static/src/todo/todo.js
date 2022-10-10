@@ -12,5 +12,6 @@ Todo.props = {
             id: Number,
             description: String,
             done: Boolean,
+            toggleState: Function,
 
      };

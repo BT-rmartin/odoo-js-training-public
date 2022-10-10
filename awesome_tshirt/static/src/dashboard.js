@@ -25,6 +25,11 @@ class AwesomeDashboard extends Component {
               ev.target.value = "";
           }
       }
+
+      toggleState(id){
+          const item = this.todo.find(el => el.id === id);
+          item.done = !item.done;
+      }
 }
 
 AwesomeDashboard.template = "awesome_tshirt.clientaction";
