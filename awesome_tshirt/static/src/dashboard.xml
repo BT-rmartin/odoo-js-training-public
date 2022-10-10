@@ -14,7 +14,7 @@
             t-ref="todoInput"
             />
         <t t-foreach="todo" t-as="todo_item" t-key="todo_item.id">
-            <Todo id="todo_item.id" description="todo_item.description" done="todo_item.done" toggleState.bind="toggleState" />
+            <Todo id="todo_item.id" description="todo_item.description" done="todo_item.done" toggleState.bind="toggleState" removeTodo.bind="removeTodo" />
         </t>
     </div>
 </t>

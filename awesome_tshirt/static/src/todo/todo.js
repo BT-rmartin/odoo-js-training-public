@@ -13,5 +13,6 @@ Todo.props = {
             description: String,
             done: Boolean,
             toggleState: Function,
+            removeTodo: Function,
 
      };

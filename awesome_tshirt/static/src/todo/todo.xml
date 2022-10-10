@@ -3,8 +3,8 @@
 
     <t t-name="awesome_tshirt.todo_view" owl="1">
         <p t-att-class="props.done ? 'text-decoration-line-through text-muted' : ''">
-            <input type="checkbox" t-att-checked="props.done" t-on-click    ="() => props.toggleState(props.id)"/>
-            <t t-esc="props.id"/>.<t t-esc="props.description"/>
+            <input type="checkbox" t-att-checked="props.done" t-on-click="() => props.toggleState(props.id)"/>
+            <t t-esc="props.id"/>.<t t-esc="props.description"/><span class="fa fa-remove" t-on-click="() => props.removeTodo(props.id)"/>
         </p>
     </t>
 

@@ -30,6 +30,12 @@ class AwesomeDashboard extends Component {
           const item = this.todo.find(el => el.id === id);
           item.done = !item.done;
       }
+
+      removeTodo(id){
+          const item = this.todo.find(el => el.id === id);
+          let index = this.todo.indexOf(item)
+          this.todo.splice(index, 1);
+      }
 }
 
 AwesomeDashboard.template = "awesome_tshirt.clientaction";
