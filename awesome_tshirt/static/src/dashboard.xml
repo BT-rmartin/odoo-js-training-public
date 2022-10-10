@@ -3,23 +3,30 @@
 
 <t t-name="awesome_tshirt.clientaction" owl="1">
     <div class="p-3">
-        <Counter/>
-        <br/>
+        <Layout display="display">
+            <t t-set-slot="control-panel-bottom-left">
 
-        <input
-            placeholder="Enter a new task"
-            type="text"
-            class="o_input"
-            t-on-keyup="addTodo"
-            t-ref="todoInput"
-            />
-        <t t-foreach="todo" t-as="todo_item" t-key="todo_item.id">
-            <Todo id="todo_item.id" description="todo_item.description" done="todo_item.done" toggleState.bind="toggleState" removeTodo.bind="removeTodo" />
-        </t>
-        <Card>
-          <t t-set-slot="title">Card title</t>
-          <p class="card-text">Some quick example text...</p>
-        </Card>
+                <Counter/>
+                <br/>
+
+                <input
+                    placeholder="Enter a new task"
+                    type="text"
+                    class="o_input"
+                    t-on-keyup="addTodo"
+                    t-ref="todoInput"
+                    />
+                <t t-foreach="todo" t-as="todo_item" t-key="todo_item.id">
+                    <Todo id="todo_item.id" description="todo_item.description" done="todo_item.done" toggleState.bind="toggleState" removeTodo.bind="removeTodo" />
+                </t>
+                <Card>
+                  <t t-set-slot="title">Card title</t>
+                  <p class="card-text">Some quick example text...</p>
+                </Card>
+            </t>
+
+        </Layout>
+
     </div>
 </t>
 
