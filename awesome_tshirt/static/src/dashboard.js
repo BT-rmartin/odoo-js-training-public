@@ -4,7 +4,7 @@ import { registry } from "@web/core/registry";
 import { Counter } from "@awesome_tshirt/counter/counter";
 import { Todo } from "@awesome_tshirt/todo/todo";
 
-const { Component, useState } = owl;
+const { Component, useState, onMounted, useRef } = owl;
 
 class AwesomeDashboard extends Component {
       setup() {
@@ -12,6 +12,10 @@ class AwesomeDashboard extends Component {
           // We need to add useState to re-render the page when this changes its value, otherwise the value is added
           // but the page is not re-render
           this.todo = useState([])
+          // Get reference of the input and once it is mounted it puts the focus there
+          // so as soon as the page is reloaded the focus is there
+          const ref = useRef('todoInput')
+          onMounted(() => ref.el && ref.el.focus());
       }
 
       addTodo(ev){
