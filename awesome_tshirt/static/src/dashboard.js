@@ -6,6 +6,8 @@ import { Todo } from "@awesome_tshirt/todo/todo";
 import { Card } from "@awesome_tshirt/card/card";
 import { Layout } from "@web/search/layout";
 import { getDefaultConfig } from "@web/views/view";
+import { useService } from "@web/core/utils/hooks";
+import { Domain } from "@web/core/domain";
 
 const { Component, useState, onMounted, useRef, useSubEnv} = owl;
 
@@ -29,6 +31,8 @@ class AwesomeDashboard extends Component {
             this.display = {
                 controlPanel: { "top-right": false, "bottom-right": false },
             };
+
+            this.action = useService("action");
       }
 
       addTodo(ev){
@@ -49,6 +53,34 @@ class AwesomeDashboard extends Component {
           let index = this.todo.indexOf(item)
           this.todo.splice(index, 1);
       }
+
+          openCustomerView() {
+        this.action.doAction("base.action_partner_form");
+    }
+
+    openOrders(title, domain) {
+        this.action.doAction({
+            type: "ir.actions.act_window",
+            name: title,
+            res_model: "awesome_tshirt.order",
+            domain: new Domain(domain).toList(),
+            views: [
+                [false, "list"],
+                [false, "form"],
+            ],
+        });
+    }
+    openLast7DaysOrders() {
+        const domain =
+            "[('create_date','>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]";
+        this.openOrders("Last 7 days orders", domain);
+    }
+
+    openLast7DaysCancelledOrders() {
+        const domain =
+            "[('create_date','>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('state','=', 'cancelled')]";
+        this.openOrders("Last 7 days cancelled orders", domain);
+    }
 }
 
 AwesomeDashboard.template = "awesome_tshirt.clientaction";
