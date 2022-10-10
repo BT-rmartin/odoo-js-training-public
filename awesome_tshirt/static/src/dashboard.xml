@@ -5,7 +5,9 @@
     <div class="p-3">
         <Counter/>
         hello world
-        <Todo id="todo.id" description="todo.description" done="todo.done"/>
+        <t t-foreach="todo" t-as="todo_item" t-key="todo_item.id">
+            <Todo id="todo_item.id" description="todo_item.description" done="todo_item.done"/>
+        </t>
     </div>
 </t>
 
