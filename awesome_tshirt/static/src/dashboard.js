@@ -8,11 +8,18 @@ const { Component, useState } = owl;
 
 class AwesomeDashboard extends Component {
       setup() {
-          this.todo = [
-              {id: 3, description: "buy milk", done: false},
-              {id: 4, description: "buy eggs", done: true},
-              {id: 5, description: "buy avocado", done: true},
-          ];
+          this.nextId = 0;
+          // We need to add useState to re-render the page when this changes its value, otherwise the value is added
+          // but the page is not re-render
+          this.todo = useState([])
+      }
+
+      addTodo(ev){
+          if (ev.keyCode === 13 && ev.target.value != ""){
+              this.todo.push({id: this.nextId++, description: ev.target.value, done: false});
+              // Cleaning the input
+              ev.target.value = "";
+          }
       }
 }
 
