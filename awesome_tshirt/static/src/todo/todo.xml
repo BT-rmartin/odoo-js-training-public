@@ -2,10 +2,9 @@
 <templates xml:space="preserve">
 
     <t t-name="awesome_tshirt.todo_view" owl="1">
-        <p><t t-esc="props.id"/></p>
-        <p><t t-esc="props.description"/></p>
-        <p><t t-esc="props.done"/></p>
+        <p t-att-class="props.done ? 'text-decoration-line-through text-muted' : ''">
+            <t t-esc="props.id"/>.<t t-esc="props.description"/>
+        </p>
     </t>
-
 
 </templates>

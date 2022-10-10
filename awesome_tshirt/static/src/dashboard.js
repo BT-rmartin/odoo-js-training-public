@@ -8,7 +8,7 @@ const { Component, useState } = owl;
 
 class AwesomeDashboard extends Component {
       setup() {
-        this.todo = { id: 3, description: "buy milk", done: false };
+        this.todo = { id: 3, description: "buy milk", done: true };
       }
 }
 
