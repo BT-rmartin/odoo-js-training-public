@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="awesome_tshirt.todo_view" owl="1">
+        <p><t t-esc="props.todo.id"/></p>
+        <p><t t-esc="props.todo.description"/></p>
+        <p><t t-esc="props.todo.done"/></p>
+    </t>
+
+
+</templates>
