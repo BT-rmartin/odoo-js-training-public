@@ -3,7 +3,12 @@
 
     <t t-name="awesome_tshirt.image_preview_view" owl="1">
         <CharField t-props="props"/>
-        <img t-att-src="props.value"/>
+        <t t-if="!props.value">
+            <div style="color: #FF0000;">MISSING TSHIRT DESIGN</div>
+        </t>
+        <t t-else="">
+            <img t-att-src="props.value"/>
+        </t>
     </t>
 
 
