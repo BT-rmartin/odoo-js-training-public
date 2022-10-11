@@ -6,9 +6,9 @@
       <field name="name">awesome_tshirt.orders.form</field>
       <field name="model">awesome_tshirt.order</field>
       <field name="arch" type="xml">
-        <form>
+        <form js_class="form_add_button">
           <header>
-            <field name="state" widget="statusbar" clickable="1"/>
+            <field name="state" widget="statusbar" clickabmle="1"/>
           </header>
 
           <sheet>
