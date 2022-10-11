@@ -9,7 +9,7 @@ import { getDefaultConfig } from "@web/views/view";
 import { useService } from "@web/core/utils/hooks";
 import { Domain } from "@web/core/domain";
 
-const { Component, useState, onMounted, useRef, useSubEnv} = owl;
+const { Component, useState, onMounted, useRef, useSubEnv, onWillStart} = owl;
 
 class AwesomeDashboard extends Component {
       setup() {
@@ -33,6 +33,19 @@ class AwesomeDashboard extends Component {
             };
 
             this.action = useService("action");
+
+            this.rpc = useService('rpc');
+            this.keyToString = {
+                average_quantity: "Average amount of t-shirt by order this month",
+                average_time: "Average time for an order to go from 'new' to 'sent' or 'cancelled'",
+                nb_cancelled_orders: "Number of cancelled orders this month",
+                nb_new_orders: "Number of new orders this month",
+                total_amount: "Total amount of new orders this month",
+            };
+            onWillStart(async () => {
+                this.statistics = await this.rpc('/awesome_tshirt/statistics', {});
+
+            });
       }
 
       addTodo(ev){
@@ -54,7 +67,7 @@ class AwesomeDashboard extends Component {
           this.todo.splice(index, 1);
       }
 
-          openCustomerView() {
+      openCustomerView() {
         this.action.doAction("base.action_partner_form");
     }
 
@@ -81,6 +94,7 @@ class AwesomeDashboard extends Component {
             "[('create_date','>=', (context_today() - datetime.timedelta(days=7)).strftime('%Y-%m-%d')), ('state','=', 'cancelled')]";
         this.openOrders("Last 7 days cancelled orders", domain);
     }
+
 }
 
 AwesomeDashboard.template = "awesome_tshirt.clientaction";
