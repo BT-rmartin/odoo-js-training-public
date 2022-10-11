@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="awesome_tshirt.message_widget_view" owl="1">
+        <div class="alert alert-warning" role="alert" >
+            <t t-if="!props.record.data.image_url">
+                <div style="color: #FF0000;">NO IMAGE</div>
+            </t>
+            <t t-if="props.record.data.amount > 100.0">
+                <div style="color: #FF0000;">ADD PROMOTIONAL MATERIAL</div>
+            </t>
+        </div>
+    </t>
+
+
+</templates>
