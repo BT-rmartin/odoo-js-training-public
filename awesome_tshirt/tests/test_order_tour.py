@@ -5,4 +5,4 @@ from odoo.tests.common import tagged
 class TestOrderTour(HttpCase):
     def test_order_tour(self):
         # You can also use watch=True to see the browser in action
-        self.start_tour('/web', 'order_tour', login="admin")
+        self.start_tour('/web', 'order_tour', login="admin", watch=True)
